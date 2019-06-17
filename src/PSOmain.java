@@ -1,5 +1,4 @@
 // Main function
-import java.util.Random;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.PrintWriter;
@@ -156,28 +155,15 @@ public class PSOmain {
 		}
 		
 		// write out the objective function value & search log
-		try {
-            // create export
-            FileWriter fw = new FileWriter("C:\\result\\PSO\\test.csv", false); // true: add, false: overwrite
-            PrintWriter pw = new PrintWriter(new BufferedWriter(fw));
-
-            // the contents of the file
-            for(int i=0;i<ite;i++) {
-				for(int j=0;j<trial;j++) {
-		            pw.print(Frec[i][j]);
-		            if(j<trial-1){
-			            pw.print(",");
-		            }else {
-			            pw.println();		            	
-		            }
-				}
-			}
-
-            // write it out
-            pw.close();
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+		String pathname = "C:\\result\\PSO\\";
+		String sufi= ".csv";
+		String fnameF = "Fitness";
+		String fnameX1 = "x";
+		String fnameX2 = "y";
+		WriteResult.Output(Frec, ite, trial, pathname + fnameF + sufi);
+		WriteResult.Output(Frec, ite, trial, pathname + fnameX1 + sufi);
+		WriteResult.Output(Frec, ite, trial, pathname + fnameX2 + sufi);
+		
+		System.out.println(pathname + "test" + sufi); 
 	}
 }
